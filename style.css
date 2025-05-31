@@ -38,12 +38,16 @@ header h2 {
     margin: 0.5em 0 0;
     font-size: 1.5em;
     font-weight: 300;
-    color: #000000 !important; 
+    color: #000000; /* COLORE NERO - Assicurati che questa sia la riga finale per h2 nel CSS */
 }
 
-/* style.css */
-
-/* ... (codice per header e intro-text) ... */
+.header-subtitle { /* Stile per il sottotitolo aggiunto */
+    margin: 0.5em 0 1.5em;
+    font-size: 1em;
+    font-weight: normal;
+    opacity: 0.8;
+    color: #000000;
+}
 
 /* NUOVI STILI PER LA NAVIGAZIONE PRINCIPALE */
 .main-nav {
@@ -119,7 +123,7 @@ main {
     margin: auto;
 }
 
-#matrice-rischio, #strategie-generali {
+#matrice-rischio, #strategie-generali, #metodologia, #mappa-vulnerabilita, #overview-charts { /* Includi tutte le sezioni qui */
     background: #fff;
     padding: 30px;
     border-radius: 8px;
