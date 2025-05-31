@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impatto del Rischio Climatico - Cantina [Nome Tua Cantina]</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+
 </head>
 <body>
     <header>
         <h1>Impatto del Rischio Climatico Fisico su Asset Aziendali</h1>
         <h2>Azienda vitivinicola, Siracusa, Sicilia</h2>
+        <p class="header-subtitle">Coltivazione di uva, produzione e distribuzione di vino</p>
         <p class="intro-text">Questa analisi interattiva esplora la vulnerabilità degli asset della nostra cantina agli eventi climatici fisici, offrendo una panoramica chiara dei rischi e delle strategie di adattamento.</p>
     </header>
 
@@ -29,7 +31,7 @@
     </nav>
 
     <main>
-                <section id="matrice-rischio" class="content-section">
+        <section id="matrice-rischio" class="content-section">
             <h2>Matrice di Impatto Interattiva</h2>
             <div id="controls">
                 <label for="scenario-slider">Seleziona Scenario Climatico:</label>
@@ -70,6 +72,7 @@
                 <button id="close-detail">Chiudi</button>
             </div>
         </section>
+
         <section id="metodologia" class="content-section">
             <h2>Metodologia di Analisi del Rischio Climatico Fisico</h2>
             <p>La presente analisi si propone di valutare in maniera sistematica l'impatto potenziale degli eventi climatici fisici sulla continuità operativa e sulla sostenibilità a lungo termine della Cantina [Nome Tua Cantina], situata nel cuore del Siracusano. L'approccio adottato è conforme ai principi di gestione del rischio e integra le più recenti linee guida internazionali in materia di reporting climatico.</p>
@@ -145,7 +148,7 @@
                 <li><strong>Diversificazione e Adattamento Varietale:</strong> Ricerca e introduzione di vitigni più resilienti alla siccità e al calore, o portainnesti adattativi.</li>
                 <li><strong>Gestione Sostenibile delle Risorse:</strong> Ottimizzazione dell'uso dell'acqua, pratiche di conservazione del suolo, energie rinnovabili.</li>
                 <li><strong>Formazione e Sicurezza dei Lavoratori:</strong> Programmi di formazione sui rischi climatici e protocolli di sicurezza per eventi estremi.</li>
-                <li><strong>Pianificazione della Continuità Operativa:</b> Sviluppo di piani di emergenza per eventi estremi e di comunicazione con stakeholder.</li>
+                <li><strong>Pianificazione della Continuità Operativa:</strong> Sviluppo di piani di emergenza per eventi estremi e di comunicazione con stakeholder.</li>
             </ul>
         </section>
     </main>
@@ -155,8 +158,14 @@
         <p>Analisi a cura di Ilaria De Palma, Rebecca Gambassi, Giulia Terracciano, Andrea My, Luigi Logozzo.</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-p4NxAo9TXXGKKXNLdrtL3XoUGYylfL4yT/7zS/Fw9Z8=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="data.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
