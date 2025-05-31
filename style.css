@@ -41,6 +41,71 @@ header h2 {
     color: #000000 !important; 
 }
 
+/* style.css */
+
+/* ... (codice per header e intro-text) ... */
+
+/* NUOVI STILI PER LA NAVIGAZIONE PRINCIPALE */
+.main-nav {
+    background-color: #333; /* Sfondo scuro per il menu */
+    padding: 0.8rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky; /* Rende il menu fisso in alto allo scroll */
+    top: 0;
+    z-index: 1000; /* Assicura che il menu sia sopra gli altri elementi */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Elementi del menu in linea */
+    justify-content: center; /* Centra gli elementi */
+    flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+}
+
+.main-nav li {
+    margin: 0 15px; /* Spazio tra gli elementi del menu */
+}
+
+.main-nav a {
+    color: #fff; /* Testo bianco */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* Sottolineatura invisibile per l'effetto hover */
+}
+
+.main-nav a:hover,
+.main-nav a.active { /* 'active' per la sezione corrente, se lo implementi con JS */
+    color: #4CAF50; /* Colore verde al passaggio del mouse o sezione attiva */
+    border-bottom-color: #4CAF50;
+}
+
+/* Stili per le sezioni di contenuto per garantire spaziatura adeguata */
+.content-section {
+    padding-top: 80px; /* Lascia spazio per il menu fisso quando si salta a una sezione */
+    margin-top: -60px; /* Offset negativo per lo scroll smooth, se usi CSS scroll-behavior */
+    /* Aggiungi altri stili comuni alle sezioni qui */
+}
+
+/* Responsive design per il menu */
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column; /* Menu a colonna su schermi piccoli */
+        align-items: center; /* Centra gli elementi */
+    }
+    .main-nav li {
+        margin: 10px 0; /* Più spazio verticale tra gli elementi */
+    }
+    .main-nav a {
+        font-size: 1em;
+    }
+}
+
 .intro-text {
     max-width: 800px;
     margin: 1.5rem auto 0;
