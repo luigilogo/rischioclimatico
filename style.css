@@ -40,13 +40,7 @@ header h2 {
     font-weight: 300;
     color: #000000 !important; 
 }
-.header-subtitle {
-    margin: 0em 0 1.5em; /* Spazio sopra e sotto per separarlo */
-    font-size: 1em; /* Dimensione più piccola rispetto all'h2 */
-    font-weight: normal; /* Testo non in grassetto */
-    opacity: 0.8; /* Leggermente meno opaco per un effetto più morbido */
-    color: #000000 !important; /* Colore nero */
-}
+
 .intro-text {
     max-width: 800px;
     margin: 1.5rem auto 0;
