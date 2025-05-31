@@ -12,11 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const scenarioSlider = document.getElementById('scenario-slider');
     const currentScenarioSpan = document.getElementById('current-scenario');
 
-    // Assicurati che 'climateRiskData' e 'scenarioOptions' siano definiti in data.js
-    // Esempio (per test se data.js non è caricato correttamente):
-    // const climateRiskData = { /* ... i tuoi dati qui ... */ };
-    // const scenarioOptions = ["Oggi", "2050 - Moderato", "2050 - Severo"];
-
+    // climateRiskData e scenarioOptions sono definiti in data.js
+    // Assicurati che data.js sia caricato prima di script.js nell'HTML
 
     const climateEvents = Object.keys(climateRiskData);
     const assets = ["Edifici", "Comunicazione", "Lavoratori", "Clienti", "Energia", "Vigneti"];
@@ -37,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             assets.forEach(asset => {
                 const cell = document.createElement('td');
-                const scenarioData = climateRiskData[event][asset]?.scenarios[selectedScenario]; // Ottieni i dati per lo scenario selezionato
+                // Verifica che climateRiskData[event][asset] esista prima di accedere a .scenarios
+                const scenarioData = climateRiskData[event] && climateRiskData[event][asset] ?
+                                     climateRiskData[event][asset].scenarios[selectedScenario] : null;
 
                 if (scenarioData) {
                     const impact = scenarioData.impact;
@@ -48,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.dataset.scenario = selectedScenario; // Salva lo scenario nel dataset
                 } else {
                     cell.textContent = '-'; // Se non ci sono dati specifici
+                    cell.classList.add('cell', 'impact-1'); // Applica uno stile di default per le celle senza dati
                 }
                 row.appendChild(cell);
             });
@@ -74,15 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailStrategies.textContent = data.strategies;
                     detailPanel.classList.remove('hidden');
 
-                    // --- MODIFICA QUI ---
                     // Scorri alla sezione della matrice di rischio per visualizzare sia la tabella che i dettagli
                     const matriceRischioSection = document.getElementById('matrice-rischio');
-                    if (matriceRischioSection) { // Aggiungi un controllo per sicurezza
+                    if (matriceRischioSection) {
                         matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // 'block: "start"' allinea l'inizio della sezione con l'inizio del viewport.
-                        // Questo dovrebbe mostrare la parte superiore della tabella e, se c'è spazio, i dettagli sotto.
                     }
-                    // --------------------
                 }
             });
         });
@@ -101,165 +97,179 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LOGICA MAPPA ---
-    const siracusaCoords = [37.0754, 15.2891]; // Coordinate indicative di Siracusa
+    // Assicurati che 'L' sia definito da Leaflet.js
+    if (typeof L !== 'undefined') {
+        const siracusaCoords = [37.0754, 15.2891]; // Coordinate indicative di Siracusa
 
-    const mymap = L.map('mapid').setView(siracusaCoords, 10); // 10 è lo zoom level
+        const mymap = L.map('mapid').setView(siracusaCoords, 10); // 10 è lo zoom level
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mymap);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);
 
-    // Esempio: Aggiungi un marker per la posizione della cantina (personalizza coordinate)
-    const wineryCoords = [37.05, 15.2]; // Coordinate fittizie della tua cantina
-    L.marker(wineryCoords).addTo(mymap)
-        .bindPopup("<b>La Tua Cantina Qui!</b><br> Punto di analisi principale.").openPopup();
+        // Esempio: Aggiungi un marker per la posizione della cantina (personalizza coordinate)
+        const wineryCoords = [37.05, 15.2]; // Coordinate fittizie della tua cantina
+        L.marker(wineryCoords).addTo(mymap)
+            .bindPopup("<b>La Tua Cantina Qui!</b><br> Punto di analisi principale.").openPopup();
 
-    // Esempio: Aggiungi aree di vulnerabilità concettuali
-    // Puoi definire aree più complesse con GeoJSON o tracciare poligoni semplici
-    const coastalArea = L.polygon([
-        [36.95, 15.2], // Esempio: coord per un poligono sulla costa
-        [37.00, 15.3],
-        [37.05, 15.25],
-        [37.00, 15.15]
-    ], {
-        color: 'blue',
-        fillColor: '#00BFFF',
-        fillOpacity: 0.2
-    }).addTo(mymap).bindPopup("<b>Area Costiera</b><br>Rischio prevalente: Piogge intense, Venti forti.");
+        // Esempio: Aggiungi aree di vulnerabilità concettuali
+        // Puoi definire aree più complesse con GeoJSON o tracciare poligoni semplici
+        const coastalArea = L.polygon([
+            [36.95, 15.2], // Esempio: coord per un poligono sulla costa
+            [37.00, 15.3],
+            [37.05, 15.25],
+            [37.00, 15.15]
+        ], {
+            color: 'blue',
+            fillColor: '#00BFFF',
+            fillOpacity: 0.2
+        }).addTo(mymap).bindPopup("<b>Area Costiera</b><br>Rischio prevalente: Piogge intense, Venti forti.");
 
-    const inlandArea = L.polygon([
-        [37.15, 15.0], // Esempio: coord per un poligono nell'entroterra
-        [37.20, 15.1],
-        [37.10, 15.2],
-        [37.05, 15.1]
-    ], {
-        color: 'brown',
-        fillColor: '#A0522D',
-        fillOpacity: 0.2
-    }).addTo(mymap).bindPopup("<b>Area Interna/Collinare</b><br>Rischio prevalente: Siccità prolungata, Aumento temperature, Frane/Smottamenti.");
+        const inlandArea = L.polygon([
+            [37.15, 15.0], // Esempio: coord per un poligono nell'entroterra
+            [37.20, 15.1],
+            [37.10, 15.2],
+            [37.05, 15.1]
+        ], {
+            color: 'brown',
+            fillColor: '#A0522D',
+            fillOpacity: 0.2
+        }).addTo(mymap).bindPopup("<b>Area Interna/Collinare</b><br>Rischio prevalente: Siccità prolungata, Aumento temperature, Frane/Smottamenti.");
 
-    // Puoi aggiungere più poligoni per diverse aree o usare dati GeoJSON reali se disponibili.
-
-    // --- LOGICA GRAFICI ---
-    const eventImpactCtx = document.getElementById('eventImpactChart').getContext('2d');
-    const assetVulnerabilityCtx = document.getElementById('assetVulnerabilityChart').getContext('2d');
-
-    let eventImpactChart; // Definisci le variabili dei grafici fuori dalla funzione
-    let assetVulnerabilityChart;
-
-    function updateCharts() {
-        const selectedScenario = scenarioOptions[currentScenarioIndex];
-
-        // Dati per "Impatto Medio per Evento Climatico"
-        const eventAverageImpacts = {};
-        climateEvents.forEach(event => {
-            let totalImpact = 0;
-            let count = 0;
-            assets.forEach(asset => {
-                const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
-                if (data) {
-                    totalImpact += data.impact;
-                    count++;
-                }
-            });
-            eventAverageImpacts[event] = count > 0 ? (totalImpact / count).toFixed(1) : 0;
-        });
-
-        const eventChartLabels = Object.keys(eventAverageImpacts);
-        const eventChartData = Object.values(eventAverageImpacts).map(Number); // Converti a numero
-
-        if (eventImpactChart) {
-            eventImpactChart.destroy(); // Distruggi il grafico precedente
-        }
-        eventImpactChart = new Chart(eventImpactCtx, {
-            type: 'bar',
-            data: {
-                labels: eventChartLabels,
-                datasets: [{
-                    label: 'Impatto Medio (1-5)',
-                    data: eventChartData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 5,
-                        title: {
-                            display: true,
-                            text: 'Livello di Impatto'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        // Dati per "Vulnerabilità Media per Asset"
-        const assetAverageVulnerabilities = {};
-        assets.forEach(asset => {
-            let totalImpact = 0;
-            let count = 0;
-            climateEvents.forEach(event => {
-                const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
-                if (data) {
-                    totalImpact += data.impact;
-                    count++;
-                }
-            });
-            assetAverageVulnerabilities[asset] = count > 0 ? (totalImpact / count).toFixed(1) : 0;
-        });
-
-        const assetChartLabels = Object.keys(assetAverageVulnerabilities);
-        const assetChartData = Object.values(assetAverageVulnerabilities).map(Number); // Converti a numero
-
-        if (assetVulnerabilityChart) {
-            assetVulnerabilityChart.destroy(); // Distruggi il grafico precedente
-        }
-        assetVulnerabilityChart = new Chart(assetVulnerabilityCtx, {
-            type: 'bar',
-            data: {
-                labels: assetChartLabels,
-                datasets: [{
-                    label: 'Vulnerabilità Media (1-5)',
-                    data: assetChartData,
-                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 5,
-                        title: {
-                            display: true,
-                            text: 'Livello di Vulnerabilità'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
+        // Puoi aggiungere più poligoni per diverse aree o usare dati GeoJSON reali se disponibili.
+    } else {
+        console.error("Leaflet (L) non è definito. Assicurati che leaflet.js sia caricato correttamente.");
     }
 
-    // Inizializzazione della pagina
+
+    // --- LOGICA GRAFICI ---
+    // Assicurati che 'Chart' sia definito da Chart.js
+    if (typeof Chart !== 'undefined') {
+        const eventImpactCtx = document.getElementById('eventImpactChart').getContext('2d');
+        const assetVulnerabilityCtx = document.getElementById('assetVulnerabilityChart').getContext('2d');
+
+        let eventImpactChart; // Definisci le variabili dei grafici fuori dalla funzione
+        let assetVulnerabilityChart;
+
+        function updateCharts() {
+            const selectedScenario = scenarioOptions[currentScenarioIndex];
+
+            // Dati per "Impatto Medio per Evento Climatico"
+            const eventAverageImpacts = {};
+            climateEvents.forEach(event => {
+                let totalImpact = 0;
+                let count = 0;
+                assets.forEach(asset => {
+                    const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
+                    if (data) {
+                        totalImpact += data.impact;
+                        count++;
+                    }
+                });
+                eventAverageImpacts[event] = count > 0 ? (totalImpact / count).toFixed(1) : 0;
+            });
+
+            const eventChartLabels = Object.keys(eventAverageImpacts);
+            const eventChartData = Object.values(eventAverageImpacts).map(Number); // Converti a numero
+
+            if (eventImpactChart) {
+                eventImpactChart.destroy(); // Distruggi il grafico precedente
+            }
+            eventImpactChart = new Chart(eventImpactCtx, {
+                type: 'bar',
+                data: {
+                    labels: eventChartLabels,
+                    datasets: [{
+                        label: 'Impatto Medio (1-5)',
+                        data: eventChartData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            title: {
+                                display: true,
+                                text: 'Livello di Impatto'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Dati per "Vulnerabilità Media per Asset"
+            const assetAverageVulnerabilities = {};
+            assets.forEach(asset => {
+                let totalImpact = 0;
+                let count = 0;
+                climateEvents.forEach(event => {
+                    const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
+                    if (data) {
+                        totalImpact += data.impact;
+                        count++;
+                    }
+                });
+                assetAverageVulnerabilities[asset] = count > 0 ? (totalImpact / count).toFixed(1) : 0;
+            });
+
+            const assetChartLabels = Object.keys(assetAverageVulnerabilities);
+            const assetChartData = Object.values(assetAverageVulnerabilities).map(Number); // Converti a numero
+
+            if (assetVulnerabilityChart) {
+                assetVulnerabilityChart.destroy(); // Distruggi il grafico precedente
+            }
+            assetVulnerabilityChart = new Chart(assetVulnerabilityCtx, {
+                type: 'bar',
+                data: {
+                    labels: assetChartLabels,
+                    datasets: [{
+                        label: 'Vulnerabilità Media (1-5)',
+                        data: assetChartData,
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            title: {
+                                display: true,
+                                text: 'Livello di Vulnerabilità'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inizializzazione dei grafici al caricamento
+        updateCharts();
+
+    } else {
+        console.error("Chart.js non è definito. Assicurati che chart.js sia caricato correttamente.");
+    }
+
+    // Inizializzazione della pagina (popola tabella e avvia grafici se Chart.js è pronto)
     populateTable();
-    updateCharts(); // Inizializza anche i grafici al caricamento
 });
