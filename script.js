@@ -1,4 +1,4 @@
-// script.js (modificato per scenari e scroll)
+// script.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const riskTableBody = document.querySelector('#risk-table tbody');
@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const scenarioSlider = document.getElementById('scenario-slider');
     const currentScenarioSpan = document.getElementById('current-scenario');
+
+    // Assicurati che 'climateRiskData' e 'scenarioOptions' siano definiti in data.js
+    // Esempio (per test se data.js non è caricato correttamente):
+    // const climateRiskData = { /* ... i tuoi dati qui ... */ };
+    // const scenarioOptions = ["Oggi", "2050 - Moderato", "2050 - Severo"];
+
 
     const climateEvents = Object.keys(climateRiskData);
     const assets = ["Edifici", "Comunicazione", "Lavoratori", "Clienti", "Energia", "Vigneti"];
@@ -68,11 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailStrategies.textContent = data.strategies;
                     detailPanel.classList.remove('hidden');
 
-                    // --- NUOVA RIGA AGGIUNTA QUI ---
-                    detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // 'behavior: "smooth"' crea uno scorrimento animato.
-                    // 'block: "start"' allinea l'inizio dell'elemento con l'inizio del viewport.
-                    // --------------------------------
+                    // --- MODIFICA QUI ---
+                    // Scorri alla sezione della matrice di rischio per visualizzare sia la tabella che i dettagli
+                    const matriceRischioSection = document.getElementById('matrice-rischio');
+                    if (matriceRischioSection) { // Aggiungi un controllo per sicurezza
+                        matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // 'block: "start"' allinea l'inizio della sezione con l'inizio del viewport.
+                        // Questo dovrebbe mostrare la parte superiore della tabella e, se c'è spazio, i dettagli sotto.
+                    }
+                    // --------------------
                 }
             });
         });
