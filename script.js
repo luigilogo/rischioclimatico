@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // climateRiskData e scenarioOptions sono definiti in data.js
     // Assicurati che data.js sia caricato prima di script.js nell'HTML
+    // (Verificato nell'HTML aggiornato)
 
     const climateEvents = Object.keys(climateRiskData);
     const assets = ["Edifici", "Comunicazione", "Lavoratori", "Clienti", "Energia", "Vigneti"];
@@ -65,7 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const eventName = cell.dataset.event;
                 const assetName = cell.dataset.asset;
                 const scenario = cell.dataset.scenario;
-                const data = climateRiskData[eventName][assetName]?.scenarios[scenario];
+                // Aggiunto controllo per dati nulli, anche se populateTable già lo gestisce per l'impatto,
+                // è meglio essere sicuri per i dettagli.
+                const data = climateRiskData[eventName]?.[assetName]?.scenarios[scenario];
 
                 if (data) {
                     detailEventAsset.textContent = `${eventName} su ${assetName} (${scenario})`;
@@ -74,11 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailStrategies.textContent = data.strategies;
                     detailPanel.classList.remove('hidden');
 
-                    // Scorri alla sezione della matrice di rischio per visualizzare sia la tabella che i dettagli
-                    const matriceRischioSection = document.getElementById('matrice-rischio');
-                    if (matriceRischioSection) {
-                        matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+                    // LA RIGA CHE CAUSAVA LO SCROLL AUTOMATICO È STATA RIMOSSA:
+                    // const matriceRischioSection = document.getElementById('matrice-rischio');
+                    // if (matriceRischioSection) {
+                    //     matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // }
+                } else {
+                    // Opzionale: Nascondi il pannello se non ci sono dati o mostra un messaggio di errore
+                    detailPanel.classList.add('hidden');
+                    console.warn(`Dati non trovati per Evento: ${eventName}, Asset: ${assetName}, Scenario: ${scenario}`);
                 }
             });
         });
@@ -160,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let totalImpact = 0;
                 let count = 0;
                 assets.forEach(asset => {
-                    const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
+                    const data = climateRiskData[event]?.[asset]?.scenarios[selectedScenario];
                     if (data) {
                         totalImpact += data.impact;
                         count++;
@@ -214,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let totalImpact = 0;
                 let count = 0;
                 climateEvents.forEach(event => {
-                    const data = climateRiskData[event][asset]?.scenarios[selectedScenario];
+                    const data = climateRiskData[event]?.[asset]?.scenarios[selectedScenario];
                     if (data) {
                         totalImpact += data.impact;
                         count++;
