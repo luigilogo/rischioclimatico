@@ -3,63 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impatto Rischio Climatico - Cantina [Nome Tua Cantina]</title>
+    <title>Impatto del Rischio Climatico - Cantina [Nome Tua Cantina]</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
     <header>
-        <h1>Analisi Rischio Climatico Fisico: Cantina [Nome Tua Cantina], Siracusano</h1>
-        <p>Esplora gli impatti degli eventi climatici sui nostri asset strategici.</p>
+        <h1>Impatto del Rischio Climatico Fisico su Asset Aziendali</h1>
+        <h2>Cantina [Nome Tua Cantina], Siracusa, Sicilia</h2>
+        <p class="intro-text">Questa analisi interattiva esplora la vulnerabilità degli asset della nostra cantina agli eventi climatici fisici, offrendo una panoramica chiara dei rischi e delle strategie di adattamento.</p>
     </header>
 
     <main>
         <section id="matrice-rischio">
             <h2>Matrice di Impatto Interattiva</h2>
-            <div id="controls">
-                <label for="scenario-slider">Scenario Futuro:</label>
-                <input type="range" id="scenario-slider" min="0" max="2" value="0">
-                <span id="current-scenario">Oggi</span>
+            <div class="legend-container">
+                <h3>Livello di Impatto (1-5):</h3>
+                <div class="color-legend">
+                    <div class="legend-item impact-1">1</div>
+                    <div class="legend-item impact-2">2</div>
+                    <div class="legend-item impact-3">3</div>
+                    <div class="legend-item impact-4">4</div>
+                    <div class="legend-item impact-5">5</div>
+                </div>
             </div>
             <table id="risk-table">
                 <thead>
                     <tr>
                         <th>Evento Climatico / Asset</th>
-                        <th>Vigneti</th>
                         <th>Edifici</th>
+                        <th>Comunicazione</th>
                         <th>Lavoratori</th>
                         <th>Clienti</th>
-                        <th>Comunicazione</th>
                         <th>Energia</th>
+                        <th>Vigneti</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-event="Siccità">
-                        <td>Siccità Prolungata</td>
-                        <td class="cell" data-asset="Vigneti" data-impact="5" data-probability="4"></td>
-                        <td class="cell" data-asset="Edifici" data-impact="1" data-probability="4"></td>
-                        </tr>
-                </tbody>
+                    </tbody>
             </table>
+
             <div id="detail-panel" class="hidden">
-                <h3>Dettaglio Impatto: <span id="detail-title"></span></h3>
-                <p>Impatto: <span id="detail-impact"></span></p>
-                <p>Probabilità: <span id="detail-probability"></span></p>
-                <p>Descrizione: <span id="detail-description"></span></p>
-                <p>Strategie: <span id="detail-strategies"></span></p>
+                <h3>Dettagli Impatto: <span id="detail-event-asset"></span></h3>
+                <p><strong>Livello di Impatto:</strong> <span id="detail-impact-value"></span></p>
+                <p><strong>Descrizione:</strong> <span id="detail-description"></span></p>
+                <p><strong>Strategie di Adattamento:</strong> <span id="detail-strategies"></span></p>
+                <button id="close-detail">Chiudi</button>
             </div>
         </section>
 
-        <section id="grafici">
-            <h2>Riepilogo Rischi</h2>
-            <canvas id="riskChart"></canvas>
+        <section id="strategie-generali">
+            <h2>Strategie Generali di Resilienza</h2>
+            <ul>
+                <li><strong>Monitoraggio Climatico Avanzato:</strong> Implementazione di sistemi IoT per dati in tempo reale su temperatura, umidità del suolo, precipitazioni.</li>
+                <li><strong>Diversificazione e Adattamento Varietale:</strong> Ricerca e introduzione di vitigni più resilienti alla siccità e al calore, o portainnesti adattativi.</li>
+                <li><strong>Gestione Sostenibile delle Risorse:</strong> Ottimizzazione dell'uso dell'acqua, pratiche di conservazione del suolo, energie rinnovabili.</li>
+                <li><strong>Formazione e Sicurezza dei Lavoratori:</strong> Programmi di formazione sui rischi climatici e protocolli di sicurezza per eventi estremi.</li>
+                <li><strong>Pianificazione della Continuità Operativa:</strong> Sviluppo di piani di emergenza per eventi estremi e di comunicazione con stakeholder.</li>
+            </ul>
         </section>
-
-        </main>
+    </main>
 
     <footer>
-        <p>&copy; [Anno] [Nome Tua Cantina]. Tutti i diritti riservati. Lavoro per Master II livello.</p>
+        <p>&copy; 2025 Cantina [Nome Tua Cantina]. Lavoro di Master di Secondo Livello.</p>
+        <p>Analisi a cura di [Il Tuo Nome/Cognome]</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="data.js"></script> <script src="script.js"></script>
 </body>
 </html>
