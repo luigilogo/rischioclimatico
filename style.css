@@ -1,381 +1,386 @@
-/* style.css */
-
-:root {
-    /* Definisci i colori della heatmap per un controllo più semplice */
-    --impact-color-1: #ffffff; /* Bianco per impatto 1 (o un rosso molto chiaro) */
-    --impact-color-2: #fee0d2; /* Rosso molto chiaro */
-    --impact-color-3: #fc9272; /* Rosso chiaro */
-    --impact-color-4: #de2d26; /* Rosso medio */
-    --impact-color-5: #a50f15; /* Rosso scuro */
-}
-
+/* Stili Generali */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #f8f8f8; /* Sfondo leggermente più chiaro */
+    background-color: #f4f4f4;
     color: #333;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
-    background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Gradiente per un header più accattivante */
+    background-color: #5a2d0b; /* Colore più scuro per un tocco "cantina" */
     color: #fff;
-    padding: 2.5rem 0;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header h1 {
     margin: 0;
     font-size: 2.5em;
-    letter-spacing: -0.02em;
 }
 
 header h2 {
-    margin: 0.5em 0 0;
+    margin: 5px 0 10px;
     font-size: 1.5em;
-    font-weight: 300;
-    color: #000000; /* COLORE NERO - Assicurati che questa sia la riga finale per h2 nel CSS */
+    color: #f0c27b; /* Oro/Beige per contrasto */
 }
 
-.header-subtitle { /* Stile per il sottotitolo aggiunto */
-    margin: 0.5em 0 1.5em;
-    font-size: 1em;
-    font-weight: normal;
-    opacity: 0.8;
-    color: #000000;
+.header-subtitle, .intro-text {
+    font-size: 0.9em;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* NUOVI STILI PER LA NAVIGAZIONE PRINCIPALE */
 .main-nav {
-    background-color: #333; /* Sfondo scuro per il menu */
-    padding: 0.8rem 0;
+    background-color: #7b3f0b; /* Colore leggermente più chiaro per la nav */
+    padding: 10px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: sticky; /* Rende il menu fisso in alto allo scroll */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Assicura che il menu sia sopra gli altri elementi */
+    z-index: 1000;
 }
 
 .main-nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
-    display: flex; /* Elementi del menu in linea */
-    justify-content: center; /* Centra gli elementi */
-    flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Per gestire schermi piccoli */
 }
 
 .main-nav li {
-    margin: 0 15px; /* Spazio tra gli elementi del menu */
+    margin: 0 15px;
 }
 
 .main-nav a {
-    color: #fff; /* Testo bianco */
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
-    padding: 5px 0;
-    transition: color 0.3s ease, border-bottom-color 0.3s ease;
-    border-bottom: 2px solid transparent; /* Sottolineatura invisibile per l'effetto hover */
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.main-nav a:hover,
-.main-nav a.active { /* 'active' per la sezione corrente, se lo implementi con JS */
-    color: #4CAF50; /* Colore verde al passaggio del mouse o sezione attiva */
-    border-bottom-color: #4CAF50;
-}
-
-/* Stili per le sezioni di contenuto per garantire spaziatura adeguata */
-.content-section {
-    padding-top: 80px; /* Lascia spazio per il menu fisso quando si salta a una sezione */
-    margin-top: -60px; /* Offset negativo per lo scroll smooth, se usi CSS scroll-behavior */
-    /* Aggiungi altri stili comuni alle sezioni qui */
-}
-
-/* Responsive design per il menu */
-@media (max-width: 768px) {
-    .main-nav ul {
-        flex-direction: column; /* Menu a colonna su schermi piccoli */
-        align-items: center; /* Centra gli elementi */
-    }
-    .main-nav li {
-        margin: 10px 0; /* Più spazio verticale tra gli elementi */
-    }
-    .main-nav a {
-        font-size: 1em;
-    }
-}
-
-.intro-text {
-    max-width: 800px;
-    margin: 1.5rem auto 0;
-    font-size: 1.1em;
-    line-height: 1.8;
+.main-nav a:hover, .main-nav a:focus {
+    background-color: #a0522d; /* Marrone più chiaro all'hover */
 }
 
 main {
-    padding: 40px 20px;
-    max-width: 1400px; /* Larghezza maggiore per la tabella */
-    margin: auto;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
-#matrice-rischio, #strategie-generali, #metodologia, #mappa-vulnerabilita, #overview-charts { /* Includi tutte le sezioni qui */
-    background: #fff;
+.content-section {
+    background-color: #fff;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-}
-
-h2 {
-    color: #2E7D32;
-    text-align: center;
     margin-bottom: 30px;
-    font-size: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Legenda Colori */
-.legend-container {
-    text-align: right;
+.content-section h2 {
+    color: #5a2d0b;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em;
+    border-bottom: 2px solid #f0c27b;
+    padding-bottom: 10px;
+}
+
+.content-section h3 {
+    color: #7b3f0b;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.content-section ul {
+    list-style: disc;
+    margin-left: 20px;
     margin-bottom: 20px;
 }
 
-.legend-container h3 {
-    margin: 0 0 10px;
+.content-section ul li {
+    margin-bottom: 8px;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+}
+
+
+/* Matrice di Rischio */
+#controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#scenario-slider {
+    width: 80%;
+    max-width: 500px;
+    margin: 10px auto;
+    display: block;
+}
+
+#current-scenario {
+    font-weight: bold;
     font-size: 1.1em;
-    color: #555;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
+    color: #5a2d0b;
+}
+
+.legend-container {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .color-legend {
-    display: inline-flex;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .legend-item {
-    width: 40px; /* Larghezza delle celle della legenda */
+    width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
     font-weight: bold;
-    color: #333; /* Colore testo per la legenda */
-    font-size: 0.9em;
-    border-right: 1px solid #ddd;
-}
-.legend-item:last-child {
-    border-right: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* Colori heatmap dinamici (applicati da JS) */
-.impact-1 { background-color: var(--impact-color-1); color: #666; }
-.impact-2 { background-color: var(--impact-color-2); }
-.impact-3 { background-color: var(--impact-color-3); }
-.impact-4 { background-color: var(--impact-color-4); color: #fff; } /* Testo bianco per colore scuro */
-.impact-5 { background-color: var(--impact-color-5); color: #fff; } /* Testo bianco per colore scuro */
+/* Colori heatmap */
+.impact-1 { background-color: #a8e6cf; } /* Verde chiaro */
+.impact-2 { background-color: #dcedc8; } /* Verde-giallo */
+.impact-3 { background-color: #ffd3b6; } /* Arancione chiaro */
+.impact-4 { background-color: #ffaa99; } /* Arancione salmone */
+.impact-5 { background-color: #ff8b94; } /* Rosso corallo */
 
 
 #risk-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 0.95em;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 #risk-table th, #risk-table td {
-    border: 1px solid #eee;
-    padding: 12px 8px;
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: center;
-    min-width: 100px; /* Assicura una larghezza minima per le colonne */
 }
 
 #risk-table th {
-    background-color: #f2f2f2;
+    background-color: #7b3f0b;
+    color: white;
     font-weight: bold;
-    color: #555;
-    text-transform: uppercase;
-    font-size: 0.85em;
+    position: sticky;
+    top: 60px; /* Altezza della navbar + un po' di spazio */
+    z-index: 999;
 }
 
-#risk-table tr:first-child th:first-child {
-    border-top-left-radius: 8px;
-}
-#risk-table tr:first-child th:last-child {
-    border-top-right-radius: 8px;
-}
-
-
-/* Stile specifico per la prima colonna (eventi climatici) */
-#risk-table tbody tr td:first-child {
-    text-align: left;
-    font-weight: bold;
-    background-color: #f9f9f9;
-    color: #444;
-}
-
-.cell {
+#risk-table td.cell {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    border-radius: 4px; /* Angoli arrotondati per le celle */
-    font-weight: bold;
-    color: #333; /* Colore di default per il testo nelle celle */
 }
 
-.cell:hover {
-    transform: scale(1.05); /* Piccolo ingrandimento al passaggio del mouse */
+#risk-table td.cell:hover {
+    transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 1; /* Assicura che l'elemento hover sia sopra gli altri */
+    z-index: 10;
 }
 
-/* Pannello Dettagli */
 #detail-panel {
-    background: #e9f7ef; /* Sfondo leggermente verde per il pannello */
-    border: 1px solid #c8e6c9;
-    padding: 25px;
+    background-color: #e0f2f7; /* Azzurro chiaro */
+    border: 1px solid #b2ebf2;
+    padding: 20px;
     margin-top: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: fadeIn 0.5s ease-out; /* Animazione per l'apparizione */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+#detail-panel.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 #detail-panel h3 {
-    color: #2E7D32;
+    color: #00796b; /* Verde acqua scuro */
     margin-top: 0;
-    font-size: 1.5em;
+    border-bottom: 1px solid #80deea;
+    padding-bottom: 10px;
 }
 
 #detail-panel p {
     margin-bottom: 10px;
-    font-size: 1.1em;
+    line-height: 1.8;
 }
 
-#detail-panel p strong {
-    color: #555;
+#detail-panel strong {
+    color: #004d40;
 }
 
 #close-detail {
-    background-color: #2E7D32;
+    background-color: #00796b;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
-    margin-top: 15px;
+    display: block; /* Per centrare o posizionare facilmente */
+    margin: 20px auto 0;
 }
 
 #close-detail:hover {
-    background-color: #1B5E20;
+    background-color: #004d40;
 }
 
-.hidden {
-    display: none;
+/* Mappa Leaflet */
+#mapid {
+    height: 500px; /* Altezza fissa per la mappa */
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
 }
 
-/* Sezione Strategie Generali */
-#strategie-generali ul {
-    list-style: none;
-    padding: 0;
-}
-
-#strategie-generali li {
-    background: #f5f5f5;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-left: 5px solid #4CAF50;
-    border-radius: 4px;
-}
-
-#strategie-generali li strong {
-    color: #2E7D32;
-}
-
-footer {
+.map-info {
     text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Riepilogo Grafici - NUOVE/MIGLIORI REGOLE CSS */
+#overview-charts {
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    display: flex; /* Per centrare il contenitore dei grafici */
+    flex-direction: column; /* Per impilare titolo e container */
+    align-items: center; /* Centra orizzontalmente il contenuto */
+}
+
+.chart-container {
+    display: flex; /* O grid, a seconda del layout desiderato */
+    flex-wrap: wrap; /* Per far andare i box a capo su schermi piccoli */
+    justify-content: center; /* Centra i box all'interno del container */
+    gap: 30px; /* Spazio tra i grafici */
+    margin-top: 30px; /* Spazio dal titolo della sezione */
+    width: 100%; /* Assicurati che il contenitore occupi la larghezza disponibile */
+    max-width: 1000px; /* Limite per non farli diventare troppo larghi su schermi enormi */
+}
+
+.chart-box {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
     padding: 20px;
-    margin-top: 50px;
-    background: #333;
-    color: #aaa;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex: 1; /* Permette al box di occupare spazio disponibile */
+    min-width: 320px; /* Larghezza minima per evitare che si rimpiccioliscano troppo */
+    max-width: 45%; /* Due grafici per riga con un po' di spazio */
+    box-sizing: border-box; /* Include padding e border nel calcolo della larghezza */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra il titolo del grafico */
+}
+
+.chart-box h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #5a2d0b;
+}
+
+.chart-box canvas {
+    /* Fondamentale per la responsività e la visualizzazione corretta */
+    width: 100% !important;
+    height: 300px !important; /* Altezza fissa o minima desiderata per i grafici */
+    /* Potresti anche usare aspect-ratio: 16 / 9; invece di un height fisso */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
     font-size: 0.9em;
-    border-top: 1px solid #444;
+    margin-top: 40px;
 }
 
-/* Animazioni */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+footer p {
+    margin: 5px 0;
 }
 
-/* Responsive Design */
+/* Media Queries per la responsività */
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8em;
     }
+
     header h2 {
         font-size: 1.2em;
     }
-    .intro-text {
-        font-size: 1em;
-        padding: 0 15px;
+
+    .main-nav ul {
+        flex-direction: column;
     }
-    #risk-table {
-        font-size: 0.8em;
+
+    .main-nav li {
+        margin: 5px 0;
     }
+
+    main {
+        padding: 0 10px;
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
     #risk-table th, #risk-table td {
-        padding: 8px 4px;
-        min-width: unset; /* Rimuove larghezza minima su schermi piccoli */
+        padding: 8px;
+        font-size: 0.9em;
     }
-    .legend-container {
-        text-align: center; /* Centra la legenda su mobile */
-    }
-    .color-legend {
-        justify-content: center; /* Centra gli item della legenda */
-        margin-top: 10px;
-    }
-    #detail-panel {
-        padding: 15px;
-    }
-    #detail-panel h3 {
-        font-size: 1.2em;
-    }
-    #detail-panel p {
-        font-size: 0.95em;
+
+    .chart-box {
+        max-width: 100%; /* Un grafico per riga su schermi piccoli */
     }
 }
 
 @media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header h2 {
+        font-size: 1em;
+    }
+
+    .main-nav a {
+        padding: 5px 10px;
+    }
+
+    #scenario-slider {
+        width: 90%;
+    }
+
     #risk-table {
-        overflow-x: auto; /* Abilita lo scroll orizzontale se la tabella è troppo larga */
-        display: block;
-        white-space: nowrap; /* Impedisce alle celle di andare a capo */
-    }
-    #risk-table thead, #risk-table tbody, #risk-table tr {
-        display: inline-block; /* Per permettere lo scroll orizzontale */
-        vertical-align: top;
-    }
-    #risk-table th, #risk-table td {
-        border-bottom: none; /* Rimuove i bordi inferiori */
-    }
-    #risk-table tbody tr {
-        border-bottom: 1px solid #eee; /* Bordo per le righe */
-    }
-    #risk-table td:first-child {
-        min-width: 120px; /* Mantiene la prima colonna leggibile */
-    }
-    .legend-item {
-        width: 30px;
-        height: 25px;
         font-size: 0.8em;
     }
 }
