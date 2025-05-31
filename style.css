@@ -38,7 +38,7 @@ header h2 {
     margin: 0.5em 0 0;
     font-size: 1.5em;
     font-weight: 300;
-    opacity: 0.9;
+    color: #000000; 
 }
 
 .intro-text {
