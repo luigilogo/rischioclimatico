@@ -1,63 +1,312 @@
+/* style.css */
+
+:root {
+    /* Definisci i colori della heatmap per un controllo più semplice */
+    --impact-color-1: #ffffff; /* Bianco per impatto 1 (o un rosso molto chiaro) */
+    --impact-color-2: #fee0d2; /* Rosso molto chiaro */
+    --impact-color-3: #fc9272; /* Rosso chiaro */
+    --impact-color-4: #de2d26; /* Rosso medio */
+    --impact-color-5: #a50f15; /* Rosso scuro */
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #f8f8f8; /* Sfondo leggermente più chiaro */
     color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
-    background: #333;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Gradiente per un header più accattivante */
     color: #fff;
-    padding: 1rem 0;
+    padding: 2.5rem 0;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: -0.02em;
+}
+
+header h2 {
+    margin: 0.5em 0 0;
+    font-size: 1.5em;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 1.5rem auto 0;
+    font-size: 1.1em;
+    line-height: 1.8;
 }
 
 main {
-    padding: 20px;
-    max-width: 1200px;
+    padding: 40px 20px;
+    max-width: 1400px; /* Larghezza maggiore per la tabella */
     margin: auto;
 }
+
+#matrice-rischio, #strategie-generali {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #2E7D32;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Legenda Colori */
+.legend-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.legend-container h3 {
+    margin: 0 0 10px;
+    font-size: 1.1em;
+    color: #555;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.color-legend {
+    display: inline-flex;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.legend-item {
+    width: 40px; /* Larghezza delle celle della legenda */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333; /* Colore testo per la legenda */
+    font-size: 0.9em;
+    border-right: 1px solid #ddd;
+}
+.legend-item:last-child {
+    border-right: none;
+}
+
+/* Colori heatmap dinamici (applicati da JS) */
+.impact-1 { background-color: var(--impact-color-1); color: #666; }
+.impact-2 { background-color: var(--impact-color-2); }
+.impact-3 { background-color: var(--impact-color-3); }
+.impact-4 { background-color: var(--impact-color-4); color: #fff; } /* Testo bianco per colore scuro */
+.impact-5 { background-color: var(--impact-color-5); color: #fff; } /* Testo bianco per colore scuro */
+
 
 #risk-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: 0.95em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 #risk-table th, #risk-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #eee;
+    padding: 12px 8px;
     text-align: center;
+    min-width: 100px; /* Assicura una larghezza minima per le colonne */
 }
 
 #risk-table th {
     background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+#risk-table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+#risk-table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+
+/* Stile specifico per la prima colonna (eventi climatici) */
+#risk-table tbody tr td:first-child {
+    text-align: left;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    color: #444;
 }
 
 .cell {
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border-radius: 4px; /* Angoli arrotondati per le celle */
+    font-weight: bold;
+    color: #333; /* Colore di default per il testo nelle celle */
 }
-
-/* Colori dinamici basati sul rischio (questi sarebbero applicati da JS) */
-.risk-low { background-color: #d4edda; } /* Verde chiaro */
-.risk-medium { background-color: #fff3cd; } /* Giallo chiaro */
-.risk-high { background-color: #f8d7da; } /* Rosso chiaro */
 
 .cell:hover {
-    background-color: #e0e0e0;
+    transform: scale(1.05); /* Piccolo ingrandimento al passaggio del mouse */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1; /* Assicura che l'elemento hover sia sopra gli altri */
 }
 
+/* Pannello Dettagli */
 #detail-panel {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-top: 20px;
+    background: #e9f7ef; /* Sfondo leggermente verde per il pannello */
+    border: 1px solid #c8e6c9;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-out; /* Animazione per l'apparizione */
+}
+
+#detail-panel h3 {
+    color: #2E7D32;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+#detail-panel p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+#detail-panel p strong {
+    color: #555;
+}
+
+#close-detail {
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+#close-detail:hover {
+    background-color: #1B5E20;
 }
 
 .hidden {
     display: none;
+}
+
+/* Sezione Strategie Generali */
+#strategie-generali ul {
+    list-style: none;
+    padding: 0;
+}
+
+#strategie-generali li {
+    background: #f5f5f5;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 4px;
+}
+
+#strategie-generali li strong {
+    color: #2E7D32;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    background: #333;
+    color: #aaa;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    header h2 {
+        font-size: 1.2em;
+    }
+    .intro-text {
+        font-size: 1em;
+        padding: 0 15px;
+    }
+    #risk-table {
+        font-size: 0.8em;
+    }
+    #risk-table th, #risk-table td {
+        padding: 8px 4px;
+        min-width: unset; /* Rimuove larghezza minima su schermi piccoli */
+    }
+    .legend-container {
+        text-align: center; /* Centra la legenda su mobile */
+    }
+    .color-legend {
+        justify-content: center; /* Centra gli item della legenda */
+        margin-top: 10px;
+    }
+    #detail-panel {
+        padding: 15px;
+    }
+    #detail-panel h3 {
+        font-size: 1.2em;
+    }
+    #detail-panel p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    #risk-table {
+        overflow-x: auto; /* Abilita lo scroll orizzontale se la tabella è troppo larga */
+        display: block;
+        white-space: nowrap; /* Impedisce alle celle di andare a capo */
+    }
+    #risk-table thead, #risk-table tbody, #risk-table tr {
+        display: inline-block; /* Per permettere lo scroll orizzontale */
+        vertical-align: top;
+    }
+    #risk-table th, #risk-table td {
+        border-bottom: none; /* Rimuove i bordi inferiori */
+    }
+    #risk-table tbody tr {
+        border-bottom: 1px solid #eee; /* Bordo per le righe */
+    }
+    #risk-table td:first-child {
+        min-width: 120px; /* Mantiene la prima colonna leggibile */
+    }
+    .legend-item {
+        width: 30px;
+        height: 25px;
+        font-size: 0.8em;
+    }
 }
