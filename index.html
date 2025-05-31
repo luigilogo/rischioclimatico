@@ -17,8 +17,8 @@
 
     <nav class="main-nav">
         <ul>
-            <li><a href="#metodologia">Metodologia</a></li>
             <li><a href="#matrice-rischio">Matrice di Rischio</a></li>
+            <li><a href="#metodologia">Metodologia</a></li>
             <li><a href="#mappa-vulnerabilita">Mappa Concettuale</a></li>
             <li><a href="#overview-charts">Riepilogo Grafici</a></li>
             <li><a href="#strategie-generali">Strategie Generali</a></li>
@@ -26,6 +26,47 @@
     </nav>
 
     <main>
+                <section id="matrice-rischio" class="content-section">
+            <h2>Matrice di Impatto Interattiva</h2>
+            <div id="controls">
+                <label for="scenario-slider">Seleziona Scenario Climatico:</label>
+                <input type="range" id="scenario-slider" min="0" max="2" value="0">
+                <span id="current-scenario">Oggi</span>
+            </div>
+            <div class="legend-container">
+                <h3>Livello di Impatto (1-5):</h3>
+                <div class="color-legend">
+                    <div class="legend-item impact-1">1</div>
+                    <div class="legend-item impact-2">2</div>
+                    <div class="legend-item impact-3">3</div>
+                    <div class="legend-item impact-4">4</div>
+                    <div class="legend-item impact-5">5</div>
+                </div>
+            </div>
+            <table id="risk-table">
+                <thead>
+                    <tr>
+                        <th>Evento Climatico / Asset</th>
+                        <th>Edifici</th>
+                        <th>Comunicazione</th>
+                        <th>Lavoratori</th>
+                        <th>Clienti</th>
+                        <th>Energia</th>
+                        <th>Vigneti</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+
+            <div id="detail-panel" class="hidden">
+                <h3>Dettagli Impatto: <span id="detail-event-asset"></span></h3>
+                <p><strong>Livello di Impatto:</strong> <span id="detail-impact-value"></span></p>
+                <p><strong>Descrizione:</strong> <span id="detail-description"></span></p>
+                <p><strong>Strategie di Adattamento:</strong> <span id="detail-strategies"></span></p>
+                <button id="close-detail">Chiudi</button>
+            </div>
+        </section>
         <section id="metodologia" class="content-section">
             <h2>Metodologia di Analisi del Rischio Climatico Fisico</h2>
             <p>La presente analisi si propone di valutare in maniera sistematica l'impatto potenziale degli eventi climatici fisici sulla continuità operativa e sulla sostenibilità a lungo termine della Cantina [Nome Tua Cantina], situata nel cuore del Siracusano. L'approccio adottato è conforme ai principi di gestione del rischio e integra le più recenti linee guida internazionali in materia di reporting climatico.</p>
@@ -72,48 +113,6 @@
             <h3>Fase 4: Proposizione di Strategie di Adattamento e Mitigazione</h3>
             <p>Per ogni rischio identificato, sono state proposte strategie concrete di adattamento e mitigazione. Tali strategie sono state classificate in base alla loro applicabilità, efficacia potenziale e, dove possibile, costo-beneficio implicito. L'obiettivo è fornire un quadro di azioni proattive per aumentare la resilienza della cantina agli eventi climatici futuri.</p>
             <p>Questa metodologia fornisce una base robusta per la comprensione dei rischi e per la formulazione di piani di gestione e investimento volti a garantire la sostenibilità e la prosperità della Cantina [Nome Tua Cantina] nel lungo periodo.</p>
-        </section>
-
-        <section id="matrice-rischio" class="content-section">
-            <h2>Matrice di Impatto Interattiva</h2>
-            <div id="controls">
-                <label for="scenario-slider">Seleziona Scenario Climatico:</label>
-                <input type="range" id="scenario-slider" min="0" max="2" value="0">
-                <span id="current-scenario">Oggi</span>
-            </div>
-            <div class="legend-container">
-                <h3>Livello di Impatto (1-5):</h3>
-                <div class="color-legend">
-                    <div class="legend-item impact-1">1</div>
-                    <div class="legend-item impact-2">2</div>
-                    <div class="legend-item impact-3">3</div>
-                    <div class="legend-item impact-4">4</div>
-                    <div class="legend-item impact-5">5</div>
-                </div>
-            </div>
-            <table id="risk-table">
-                <thead>
-                    <tr>
-                        <th>Evento Climatico / Asset</th>
-                        <th>Edifici</th>
-                        <th>Comunicazione</th>
-                        <th>Lavoratori</th>
-                        <th>Clienti</th>
-                        <th>Energia</th>
-                        <th>Vigneti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    </tbody>
-            </table>
-
-            <div id="detail-panel" class="hidden">
-                <h3>Dettagli Impatto: <span id="detail-event-asset"></span></h3>
-                <p><strong>Livello di Impatto:</strong> <span id="detail-impact-value"></span></p>
-                <p><strong>Descrizione:</strong> <span id="detail-description"></span></p>
-                <p><strong>Strategie di Adattamento:</strong> <span id="detail-strategies"></span></p>
-                <button id="close-detail">Chiudi</button>
-            </div>
         </section>
 
         <section id="mappa-vulnerabilita" class="content-section">
