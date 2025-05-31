@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impatto del Rischio Climatico - Cantina [Nome Tua Cantina]</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAo9TXXGKKXNLdrtL3XoUGYylfL4yT/7zS/Fw9Z8=" crossorigin="" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
         <h1>Impatto del Rischio Climatico Fisico su Asset Aziendali</h1>
-        <h2>Azienda vitivinicola, Siracusa, Sicilia. Coltivazione di uva, produzione e distribuzione di vino</h2>
+        <h2>Azienda vitivinicola, Siracusa, Sicilia</h2>
         <p class="intro-text">Questa analisi interattiva esplora la vulnerabilità degli asset della nostra cantina agli eventi climatici fisici, offrendo una panoramica chiara dei rischi e delle strategie di adattamento.</p>
     </header>
-    <main>
-        <!DOCTYPE html>
-<html lang="it">
-<head>
-    </head>
-<body>
-    <header>
-        </header>
 
     <nav class="main-nav">
         <ul>
@@ -28,22 +22,65 @@
             <li><a href="#mappa-vulnerabilita">Mappa Concettuale</a></li>
             <li><a href="#overview-charts">Riepilogo Grafici</a></li>
             <li><a href="#strategie-generali">Strategie Generali</a></li>
-            </ul>
+        </ul>
     </nav>
 
     <main>
         <section id="metodologia" class="content-section">
-            </section>
+            <h2>Metodologia di Analisi del Rischio Climatico Fisico</h2>
+            <p>La presente analisi si propone di valutare in maniera sistematica l'impatto potenziale degli eventi climatici fisici sulla continuità operativa e sulla sostenibilità a lungo termine della Cantina [Nome Tua Cantina], situata nel cuore del Siracusano. L'approccio adottato è conforme ai principi di gestione del rischio e integra le più recenti linee guida internazionali in materia di reporting climatico.</p>
 
-        <section id="matrice-rischio" class="content-section">...</section>
-        <section id="mappa-vulnerabilita" class="content-section">...</section>
-        <section id="overview-charts" class="content-section">...</section>
-        <section id="strategie-generali" class="content-section">...</section>
-    </main>
-    </body>
-</html>
-        <section id="matrice-rischio">
+            <h3>Fase 1: Identificazione degli Eventi Climatici Rilevanti</h3>
+            <p>Il primo passaggio ha previsto l'identificazione degli eventi climatici estremi e delle tendenze climatiche croniche che presentano la maggiore rilevanza per il contesto pedoclimatico del Siracusano e, in particolare, per l'attività vitivinicola. Basandoci su dati storici, proiezioni climatiche regionali e pareri di esperti del settore agricolo locale, sono stati selezionati i seguenti eventi:</p>
+            <ul>
+                <li><strong>Piogge intense/Alluvioni:</strong> Rischio di erosione del suolo, asfissia radicale, danni alle infrastrutture.</li>
+                <li><strong>Frane/Smottamenti:</strong> Danno strutturale a terreni e infrastrutture, rischio per la sicurezza.</li>
+                <li><strong>Grandine:</strong> Danni diretti e severi a viti e produzione, impatto su strutture.</li>
+                <li><strong>Siccità prolungata:</strong> Stress idrico per le viti, riduzione della resa e alterazione della qualità.</li>
+                <li><strong>Aumento delle temperature:</strong> Maturazione anticipata, squilibri aromatici, stress termico per piante e lavoratori.</li>
+                <li><strong>Venti forti:</strong> Danni meccanici a viti e infrastrutture, stress idrico per le piante.</li>
+            </ul>
+
+            <h3>Fase 2: Mappatura degli Asset Strategici</h3>
+            <p>Sono stati identificati gli asset aziendali cruciali per le operazioni della cantina, distinguendo tra asset tangibili e intangibili, la cui funzionalità è direttamente o indirettamente esposta agli eventi climatici. Tali asset includono:</p>
+            <ul>
+                <li><strong>Edifici:</strong> Cantina, uffici, magazzini, strutture di supporto.</li>
+                <li><strong>Comunicazione:</strong> Reti informatiche, telefoniche, accesso a internet, canali di marketing e relazioni con il pubblico.</li>
+                <li><strong>Lavoratori:</strong> Forza lavoro impegnata nelle attività agricole e di cantina.</li>
+                <li><strong>Clienti:</strong> Visibilità, accesso alla cantina, reputazione aziendale, percezione della qualità del prodotto.</li>
+                <li><strong>Energia:</strong> Fornitura elettrica, sistemi di climatizzazione/refrigerazione, macchinari.</li>
+                <li><strong>Vigneti:</strong> Il cuore dell'attività vitivinicola, comprensivo di viti, suolo, sistemi di irrigazione.</li>
+            </ul>
+
+            <h3>Fase 3: Valutazione dell'Impatto (Matrice Interattiva)</h3>
+            <p>Per ogni combinazione Evento Climatico-Asset, è stato assegnato un "Livello di Impatto" su una scala da 1 a 5, dove:</p>
+            <ul>
+                <li><strong>1: Impatto Trascurabile/Nullo</strong> - Nessuna o minima interruzione delle operazioni.</li>
+                <li><strong>2: Impatto Basso</strong> - Lievi disagi o danni facilmente gestibili.</li>
+                <li><strong>3: Impatto Moderato</strong> - Interruzioni temporanee, danni significativi ma riparabili con costi contenuti.</li>
+                <li><strong>4: Impatto Elevato</strong> - Interruzioni prolungate, danni gravi che richiedono investimenti sostanziali o modifiche operative.</li>
+                <li><strong>5: Impatto Critico/Catastrofico</strong> - Minaccia alla continuità operativa, danni irreparabili, perdita parziale o totale dell'asset.</li>
+            </ul>
+            <p>Questi valori sono stati definiti tramite un'analisi qualitativa basata su:</p>
+            <ul>
+                <li>Esperienza del settore vitivinicolo e agricolo siciliano.</li>
+                <li>Consultazione di report settoriali e accademici sugli impatti climatici.</li>
+                <li>Valutazione della specifica vulnerabilità della cantina nel contesto del Siracusano.</li>
+            </ul>
+            <p>La matrice interattiva consente di visualizzare l'impatto attuale ("Oggi") e di esplorare scenari futuri ("2050 - Moderato", "2050 - Severo") basati sulle proiezioni climatiche IPCC (Intergovernmental Panel on Climate Change), offrendo una visione dinamica dell'evoluzione del rischio.</p>
+
+            <h3>Fase 4: Proposizione di Strategie di Adattamento e Mitigazione</h3>
+            <p>Per ogni rischio identificato, sono state proposte strategie concrete di adattamento e mitigazione. Tali strategie sono state classificate in base alla loro applicabilità, efficacia potenziale e, dove possibile, costo-beneficio implicito. L'obiettivo è fornire un quadro di azioni proattive per aumentare la resilienza della cantina agli eventi climatici futuri.</p>
+            <p>Questa metodologia fornisce una base robusta per la comprensione dei rischi e per la formulazione di piani di gestione e investimento volti a garantire la sostenibilità e la prosperità della Cantina [Nome Tua Cantina] nel lungo periodo.</p>
+        </section>
+
+        <section id="matrice-rischio" class="content-section">
             <h2>Matrice di Impatto Interattiva</h2>
+            <div id="controls">
+                <label for="scenario-slider">Seleziona Scenario Climatico:</label>
+                <input type="range" id="scenario-slider" min="0" max="2" value="0">
+                <span id="current-scenario">Oggi</span>
+            </div>
             <div class="legend-container">
                 <h3>Livello di Impatto (1-5):</h3>
                 <div class="color-legend">
@@ -79,14 +116,34 @@
             </div>
         </section>
 
-        <section id="strategie-generali">
+        <section id="mappa-vulnerabilita" class="content-section">
+            <h2>Mappa Interattiva della Vulnerabilità (Siracusano)</h2>
+            <div id="mapid" style="height: 500px; width: 100%;"></div>
+            <p class="map-info">Clicca sulle aree evidenziate per scoprire i rischi climatici prevalenti.</p>
+        </section>
+
+        <section id="overview-charts" class="content-section">
+            <h2>Riepilogo Rischi Climatici</h2>
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h3>Impatto Medio per Evento Climatico</h3>
+                    <canvas id="eventImpactChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Vulnerabilità Media per Asset</h3>
+                    <canvas id="assetVulnerabilityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategie-generali" class="content-section">
             <h2>Strategie Generali di Resilienza</h2>
             <ul>
                 <li><strong>Monitoraggio Climatico Avanzato:</strong> Implementazione di sistemi IoT per dati in tempo reale su temperatura, umidità del suolo, precipitazioni.</li>
                 <li><strong>Diversificazione e Adattamento Varietale:</strong> Ricerca e introduzione di vitigni più resilienti alla siccità e al calore, o portainnesti adattativi.</li>
                 <li><strong>Gestione Sostenibile delle Risorse:</strong> Ottimizzazione dell'uso dell'acqua, pratiche di conservazione del suolo, energie rinnovabili.</li>
                 <li><strong>Formazione e Sicurezza dei Lavoratori:</strong> Programmi di formazione sui rischi climatici e protocolli di sicurezza per eventi estremi.</li>
-                <li><strong>Pianificazione della Continuità Operativa:</strong> Sviluppo di piani di emergenza per eventi estremi e di comunicazione con stakeholder.</li>
+                <li><strong>Pianificazione della Continuità Operativa:</b> Sviluppo di piani di emergenza per eventi estremi e di comunicazione con stakeholder.</li>
             </ul>
         </section>
     </main>
@@ -96,6 +153,8 @@
         <p>Analisi a cura di Ilaria De Palma, Rebecca Gambassi, Giulia Terracciano, Andrea My, Luigi Logozzo.</p>
     </footer>
 
-    <script src="data.js"></script> <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-p4NxAo9TXXGKKXNLdrtL3XoUGYylfL4yT/7zS/Fw9Z8=" crossorigin=""></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
