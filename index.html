@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impatto Rischio Climatico - Cantina [Nome Tua Cantina]</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header>
+        <h1>Analisi Rischio Climatico Fisico: Cantina [Nome Tua Cantina], Siracusano</h1>
+        <p>Esplora gli impatti degli eventi climatici sui nostri asset strategici.</p>
+    </header>
+
+    <main>
+        <section id="matrice-rischio">
+            <h2>Matrice di Impatto Interattiva</h2>
+            <div id="controls">
+                <label for="scenario-slider">Scenario Futuro:</label>
+                <input type="range" id="scenario-slider" min="0" max="2" value="0">
+                <span id="current-scenario">Oggi</span>
+            </div>
+            <table id="risk-table">
+                <thead>
+                    <tr>
+                        <th>Evento Climatico / Asset</th>
+                        <th>Vigneti</th>
+                        <th>Edifici</th>
+                        <th>Lavoratori</th>
+                        <th>Clienti</th>
+                        <th>Comunicazione</th>
+                        <th>Energia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-event="Siccità">
+                        <td>Siccità Prolungata</td>
+                        <td class="cell" data-asset="Vigneti" data-impact="5" data-probability="4"></td>
+                        <td class="cell" data-asset="Edifici" data-impact="1" data-probability="4"></td>
+                        </tr>
+                </tbody>
+            </table>
+            <div id="detail-panel" class="hidden">
+                <h3>Dettaglio Impatto: <span id="detail-title"></span></h3>
+                <p>Impatto: <span id="detail-impact"></span></p>
+                <p>Probabilità: <span id="detail-probability"></span></p>
+                <p>Descrizione: <span id="detail-description"></span></p>
+                <p>Strategie: <span id="detail-strategies"></span></p>
+            </div>
+        </section>
+
+        <section id="grafici">
+            <h2>Riepilogo Rischi</h2>
+            <canvas id="riskChart"></canvas>
+        </section>
+
+        </main>
+
+    <footer>
+        <p>&copy; [Anno] [Nome Tua Cantina]. Tutti i diritti riservati. Lavoro per Master II livello.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
