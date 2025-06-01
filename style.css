@@ -327,6 +327,31 @@ footer p {
     margin: 5px 0;
 }
 
+/* Pulsante Torna su */
+#backToTopBtn {
+    display: none; /* Nascosto di default */
+    position: fixed; /* Posizione fissa rispetto al viewport */
+    bottom: 30px; /* 30px dal bordo inferiore */
+    left: 30px; /* 30px dal bordo sinistro */
+    z-index: 1001; /* Sopra tutti gli altri elementi */
+    font-size: 24px; /* Dimensione freccia */
+    border: none;
+    outline: none;
+    background-color: #8B4513; /* Colore del bottone (marrone caldo) */
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%; /* Forma circolare */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, opacity 0.3s;
+    line-height: 1; /* Assicura che la freccia sia centrata verticalmente */
+}
+
+#backToTopBtn:hover {
+    background-color: #B3672D; /* Colore più chiaro all'hover */
+    opacity: 0.9;
+}
+
 /* Media Queries per la responsività */
 @media (max-width: 768px) {
     header h1 {
@@ -360,6 +385,13 @@ footer p {
 
     .chart-box {
         max-width: 100%; /* Un grafico per riga su schermi piccoli */
+    }
+
+    #backToTopBtn {
+        bottom: 20px;
+        left: 20px;
+        font-size: 20px;
+        padding: 8px 12px;
     }
 }
 
