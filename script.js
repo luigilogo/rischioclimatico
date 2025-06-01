@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scenarioSlider = document.getElementById('scenario-slider');
     const currentScenarioSpan = document.getElementById('current-scenario');
 
+    // Nuovo: Pulsante Torna su
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+
     // climateRiskData e scenarioOptions sono definiti in data.js
     // Assicurati che data.js sia caricato prima di script.js nell'HTML
     // (Verificato nell'HTML aggiornato)
@@ -37,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cell = document.createElement('td');
                 // Verifica che climateRiskData[event][asset] esista prima di accedere a .scenarios
                 const scenarioData = climateRiskData[event] && climateRiskData[event][asset] ?
-                                     climateRiskData[event][asset].scenarios[selectedScenario] : null;
+                                             climateRiskData[event][asset].scenarios[selectedScenario] : null;
 
                 if (scenarioData) {
                     const impact = scenarioData.impact;
@@ -80,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // LA RIGA CHE CAUSAVA LO SCROLL AUTOMATICO È STATA RIMOSSA:
                     // const matriceRischioSection = document.getElementById('matrice-rischio');
                     // if (matriceRischioSection) {
-                    //     matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    //    matriceRischioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     // }
                 } else {
                     // Opzionale: Nascondi il pannello se non ci sono dati o mostra un messaggio di errore
@@ -102,6 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
         populateTable(); // Ripopola la tabella con i nuovi dati dello scenario
         updateCharts(); // Aggiorna anche i grafici
     });
+
+    // --- NUOVO: LOGICA PULSANTE TORNA SU ---
+    // Mostra il pulsante quando l'utente scorre verso il basso di un certo numero di pixel
+    window.addEventListener('scroll', () => {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    });
+
+    // Quando l'utente clicca sul pulsante, scorri verso l'alto della pagina
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Scorrimento fluido
+        });
+    });
+
 
     // --- LOGICA MAPPA ---
     // Assicurati che 'L' sia definito da Leaflet.js
