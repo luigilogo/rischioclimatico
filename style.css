@@ -1,4 +1,4 @@
-/* Stili Generali */
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -9,28 +9,26 @@ body {
 }
 
 header {
-    /* Rimuovi il background-color solido se vuoi che l'immagine sia dominante */
     /* background-color: #5a2d0b; */
     color: #fff;
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
-    /* --- NUOVE PROPRIETÀ PER L'IMMAGINE DI SFONDO --- */
-    background-image: url('https://i.ibb.co/qLqWFYjx/Gemini-Generated-Image-fr58i5fr58i5fr58.jpg'); /* Inserisci qui l'URL dell'immagine */
-    background-size: cover; /* L'immagine coprirà l'intera area dell'header */
-    background-position: center; /* Centra l'immagine nello sfondo */
-    background-repeat: no-repeat; /* Impedisce che l'immagine si ripeta */
-    position: relative; /* Necessario per posizionare l'overlay */
-    overflow: hidden; /* Nasconde l'overflow del contenuto se l'immagine è troppo grande */
-    min-height: 350px; /* Altezza minima per l'header per mostrare bene l'immagine */
-    display: flex; /* Per centrare verticalmente e orizzontalmente il contenuto */
+   
+    background-image: url('https://i.ibb.co/qLqWFYjx/Gemini-Generated-Image-fr58i5fr58i5fr58.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+    overflow: hidden; 
+    min-height: 350px; 
+    display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* --- NUOVO: Overlay per l'Opacità e Leggibilità del Testo --- */
 header::before {
     content: '';
     position: absolute;
@@ -38,19 +36,17 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Sfondo nero con 50% di opacità */
-    /* Puoi cambiare il colore (es. rgba(90, 45, 11, 0.7) per un marrone scuro semi-trasparente) */
-    z-index: 1; /* Assicurati che l'overlay sia sopra l'immagine ma sotto il testo */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; 
 }
 
-/* Assicurati che il testo sia sopra l'overlay */
 header h1,
 header h2,
 .header-subtitle,
 .intro-text {
     position: relative;
-    z-index: 2; /* Il testo deve essere sopra l'overlay */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Aggiunge un'ombra al testo per renderlo più leggibile */
+    z-index: 2; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7); 
 }
 
 
@@ -62,7 +58,7 @@ header h1 {
 header h2 {
     margin: 5px 0 10px;
     font-size: 1.5em;
-    color: #f0c27b; /* Oro/Beige per contrasto */
+    color: #f0c27b; 
 }
 
 .header-subtitle, .intro-text {
@@ -73,7 +69,7 @@ header h2 {
 }
 
 .main-nav {
-    background-color: #7b3f0b; /* Colore leggermente più chiaro per la nav */
+    background-color: #7b3f0b; 
     padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -88,7 +84,7 @@ header h2 {
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Per gestire schermi piccoli */
+    flex-wrap: wrap; 
 }
 
 .main-nav li {
@@ -105,7 +101,7 @@ header h2 {
 }
 
 .main-nav a:hover, .main-nav a:focus {
-    background-color: #a0522d; /* Marrone più chiaro all'hover */
+    background-color: #a0522d; 
 }
 
 main {
@@ -152,7 +148,6 @@ main {
 }
 
 
-/* Matrice di Rischio */
 #controls {
     text-align: center;
     margin-bottom: 20px;
@@ -195,12 +190,11 @@ main {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* Colori heatmap */
-.impact-1 { background-color: #a8e6cf; } /* Verde chiaro */
-.impact-2 { background-color: #dcedc8; } /* Verde-giallo */
-.impact-3 { background-color: #ffd3b6; } /* Arancione chiaro */
-.impact-4 { background-color: #ffaa99; } /* Arancione salmone */
-.impact-5 { background-color: #ff8b94; } /* Rosso corallo */
+.impact-1 { background-color: #a8e6cf; } 
+.impact-2 { background-color: #dcedc8; } 
+.impact-3 { background-color: #ffd3b6; } 
+.impact-4 { background-color: #ffaa99; } 
+.impact-5 { background-color: #ff8b94; } 
 
 
 #risk-table {
@@ -220,7 +214,7 @@ main {
     color: white;
     font-weight: bold;
     position: sticky;
-    top: 60px; /* Altezza della navbar + un po' di spazio */
+    top: 60px; 
     z-index: 999;
 }
 
@@ -236,7 +230,7 @@ main {
 }
 
 #detail-panel {
-    background-color: #e0f2f7; /* Azzurro chiaro */
+    background-color: #e0f2f7; 
     border: 1px solid #b2ebf2;
     padding: 20px;
     margin-top: 30px;
@@ -252,7 +246,7 @@ main {
 }
 
 #detail-panel h3 {
-    color: #00796b; /* Verde acqua scuro */
+    color: #00796b; 
     margin-top: 0;
     border-bottom: 1px solid #80deea;
     padding-bottom: 10px;
@@ -276,7 +270,7 @@ main {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
-    display: block; /* Per centrare o posizionare facilmente */
+    display: block; 
     margin: 20px auto 0;
 }
 
@@ -284,9 +278,8 @@ main {
     background-color: #004d40;
 }
 
-/* Mappa Leaflet */
 #mapid {
-    height: 500px; /* Altezza fissa per la mappa */
+    height: 500px; 
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -300,26 +293,25 @@ main {
     color: #666;
 }
 
-/* Riepilogo Grafici - NUOVE/MIGLIORI REGOLE CSS */
 #overview-charts {
     padding: 30px;
     margin-bottom: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background-color: #fff;
-    display: flex; /* Per centrare il contenitore dei grafici */
-    flex-direction: column; /* Per impilare titolo e container */
-    align-items: center; /* Centra orizzontalmente il contenuto */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
 }
 
 .chart-container {
-    display: flex; /* O grid, a seconda del layout desiderato */
-    flex-wrap: wrap; /* Per far andare i box a capo su schermi piccoli */
-    justify-content: center; /* Centra i box all'interno del container */
-    gap: 30px; /* Spazio tra i grafici */
-    margin-top: 30px; /* Spazio dal titolo della sezione */
-    width: 100%; /* Assicurati che il contenitore occupi la larghezza disponibile */
-    max-width: 1000px; /* Limite per non farli diventare troppo larghi su schermi enormi */
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-top: 30px; 
+    width: 100%; 
+    max-width: 1000px; 
 }
 
 .chart-box {
@@ -328,13 +320,13 @@ main {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    flex: 1; /* Permette al box di occupare spazio disponibile */
-    min-width: 320px; /* Larghezza minima per evitare che si rimpiccioliscano troppo */
-    max-width: 45%; /* Due grafici per riga con un po' di spazio */
-    box-sizing: border-box; /* Include padding e border nel calcolo della larghezza */
+    flex: 1; 
+    min-width: 320px; 
+    max-width: 45%; 
+    box-sizing: border-box; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra il titolo del grafico */
+    align-items: center; 
 }
 
 .chart-box h3 {
@@ -345,13 +337,12 @@ main {
 }
 
 .chart-box canvas {
-    /* Fondamentale per la responsività e la visualizzazione corretta */
     width: 100% !important;
-    height: 300px !important; /* Altezza fissa o minima desiderata per i grafici */
-    /* Potresti anche usare aspect-ratio: 16 / 9; invece di un height fisso */
+    height: 300px !important; 
+
 }
 
-/* Footer */
+
 footer {
     background-color: #333;
     color: #fff;
@@ -365,35 +356,35 @@ footer p {
     margin: 5px 0;
 }
 
-/* Pulsante Torna su */
+
 #backToTopBtn {
-    display: none; /* Nascosto di default */
-    position: fixed; /* Posizione fissa rispetto al viewport */
-    bottom: 30px; /* 30px dal bordo inferiore */
-    left: 30px; /* 30px dal bordo sinistro */
-    z-index: 1001; /* Sopra tutti gli altri elementi */
-    font-size: 24px; /* Dimensione freccia */
+    display: none; 
+    position: fixed;
+    bottom: 30px; 
+    left: 30px; 
+    z-index: 1001; 
+    font-size: 24px; 
     border: none;
     outline: none;
-    background-color: #8B4513; /* Colore del bottone (marrone caldo) */
+    background-color: #8B4513; 
     color: white;
     cursor: pointer;
     padding: 10px 15px;
-    border-radius: 50%; /* Forma circolare */
+    border-radius: 50%; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, opacity 0.3s;
-    line-height: 1; /* Assicura che la freccia sia centrata verticalmente */
+    line-height: 1; 
 }
 
 #backToTopBtn:hover {
-    background-color: #B3672D; /* Colore più chiaro all'hover */
+    background-color: #B3672D; 
     opacity: 0.9;
 }
 
-/* Media Queries per la responsività */
+
 @media (max-width: 768px) {
     header {
-        min-height: 300px; /* Riduci un po' l'altezza su mobile */
+        min-height: 300px; 
     }
     header h1 {
         font-size: 1.8em;
@@ -425,7 +416,7 @@ footer p {
     }
 
     .chart-box {
-        max-width: 100%; /* Un grafico per riga su schermi piccoli */
+        max-width: 100%; 
     }
 
     #backToTopBtn {
