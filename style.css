@@ -17,7 +17,7 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
     /* --- NUOVE PROPRIETÀ PER L'IMMAGINE DI SFONDO --- */
-    background-image: url('http://googleusercontent.com/image_generation_content/0'); /* Inserisci qui l'URL dell'immagine */
+    background-image: url('https://i.ibb.co/qLqWFYjx/Gemini-Generated-Image-fr58i5fr58i5fr58.jpg'); /* Inserisci qui l'URL dell'immagine */
     background-size: cover; /* L'immagine coprirà l'intera area dell'header */
     background-position: center; /* Centra l'immagine nello sfondo */
     background-repeat: no-repeat; /* Impedisce che l'immagine si ripeta */
